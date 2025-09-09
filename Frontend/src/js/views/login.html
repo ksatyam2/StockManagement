@@ -1,0 +1,18 @@
+<div style="background:linear-gradient(135deg,#2f3256 0%,#a4b4d6 100%);min-height:100vh;">
+  <div style="max-width:360px;margin:60px auto;background:#fff;border-radius:12px;padding:32px 32px 24px 32px;box-shadow:0 0 32px #2238;">
+    <h2 style="color:#2f5688;font-size:2em;text-align:center;margin-bottom:20px;">Stock Manager Login</h2>
+    <form id="loginForm" data-bind="submit: login, style: {width:'100%'}">
+      <label style="display:block;margin-bottom:12px;">
+        Username:
+        <input style="width:100%;padding:6px;border-radius:6px;" data-bind="value: username" required>
+      </label>
+      <label style="display:block;margin-bottom:12px;">
+        Password:
+        <input type="password" style="width:100%;padding:6px;border-radius:6px;" data-bind="value: password" required>
+      </label>
+      <button type="submit" style="width:100%;background:#315B7B;color:#FFF;border:none;padding:10px 0;border-radius:8px;font-weight:bold;">Login</button>
+      <div style="color:red;margin-top:1em;text-align:center;" data-bind="visible: errorMsg, text: errorMsg"></div>
+      <div style="color:green;margin-top:0.5em;text-align:center;" data-bind="visible: successMsg, text: successMsg"></div>
+    </form>
+  </div>
+</div>

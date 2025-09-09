@@ -1,0 +1,47 @@
+<div class="oj-hybrid-padding">
+  <h1 style="color:#2f5688;">Stocks</h1>
+  <form id="stockForm" data-bind="submit: addStock" style="background:#f4f8fc;padding:16px;border-radius:6px;">
+    <fieldset>
+      <legend style="font-weight:bold">Add a Stock</legend>
+      <label style="margin-right:1em;">Name: <input data-bind="value: newStockName" required></label>
+      <label>Symbol: <input data-bind="value: newStockSymbol" required></label>
+      <label>Price: <input type="number" data-bind="value: newStockPrice" step="0.01" min="0" required></label>
+      <label>Quantity: <input type="number" data-bind="value: newStockQuantity" min="0" required></label>
+      <button type="submit" style="margin-left:1em;">Add Stock</button>
+    </fieldset>
+  </form>
+  <div style="margin:18px 0;">
+    <!-- <button data-bind="click: listStocks">Refresh List</button> -->
+    <button data-bind="click: deleteStock, enable: selectedStockId()">Delete Selected</button>
+  </div>
+  <table class="oj-table" border="1" cellpadding="8" cellspacing="0" style="width:100%;background:#fff;" data-bind="visible: stocks().length > 0">
+    <thead style="background:#f0f3f9;">
+      <tr>
+        <th>Select</th><th>ID</th><th>Name</th><th>Symbol</th><th>Price</th><th>Quantity</th><th>Edit</th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach: stocks">
+      <tr>
+        <td><input type="radio" name="selectedStock" data-bind="checkedValue: stockId, checked: $parent.selectedStockId"></td>
+        <td data-bind="text: stockId"></td>
+        <td data-bind="text: name"></td>
+        <td data-bind="text: symbol"></td>
+        <td data-bind="text: '₹ ' +price"></td>
+        <td data-bind="text: quantity"></td>
+        <td><button type="button" data-bind="click: $parent.openEditDialog.bind($parent, $data)">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <oj-dialog id="editStockDialog" dialog-title="Edit Stock" modality="modeless">
+    <div slot="body">
+      <form data-bind="submit: saveEditStock">
+        <label>Name: <input data-bind="value: editStock().name" required></label><br>
+        <label>Symbol: <input data-bind="value: editStock().symbol" required></label><br>
+        <label>Price: <input type="number" min="0" step="0.01" data-bind="value: editStock().price" required></label><br>
+        <label>Quantity: <input type="number" min="0" data-bind="value: editStock().quantity" required></label><br>
+        <button type="submit">Save</button>
+        <button type="button" data-bind="click: closeEditDialog">Cancel</button>
+      </form>
+    </div>
+  </oj-dialog>
+</div>

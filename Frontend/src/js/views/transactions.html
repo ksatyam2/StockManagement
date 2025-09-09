@@ -1,0 +1,90 @@
+<div class="oj-hybrid-padding">
+  <h1 style="color:#2f5688;">Transactions</h1>
+  <form id="transactionForm" data-bind="submit: submitTransaction" style="background:#f4f8fc;padding:16px;border-radius:6px;">
+    <fieldset>
+      <!-- <legend style="font-weight:bold">Buy/Sell Stock</legend>
+      <label>Customer:
+        <select data-bind="options: customers, optionsText: 'name', optionsValue: 'customerId', value: selectedCustomerId, optionsCaption: 'Select customer'" required></select>
+      </label>
+      <label>Stock:
+        <select data-bind="options: stocks, optionsText: 'symbol', optionsValue: 'stockId', value: selectedStockId, optionsCaption: 'Select stock'" required></select>
+      </label>
+      <label>Quantity:
+        <input type="number" min="1" data-bind="value: txnQuantity" required>
+      </label>
+      <label>Action:
+        <select data-bind="value: txnType">
+          <option value="BUY">Buy</option>
+          <option value="SELL">Sell</option>
+        </select>
+      </label>
+      <button type="submit" style="margin-left:1em;">Submit</button>
+    </fieldset>
+  </form>
+  <fieldset style="margin:18px 0;"> -->
+    <legend style="font-weight:bold">Filter Transactions</legend>
+    <label>Customer:
+      <select data-bind="options: customers, optionsText: 'name', optionsValue: 'customerId', value: filterCustomerId, optionsCaption: 'All customers'"></select>
+    </label>
+    <label>Stock:
+      <select data-bind="options: stocks, optionsText: 'symbol', optionsValue: 'stockId', value: filterStockId, optionsCaption: 'All stocks'"></select>
+    </label>
+    <label>Type:
+      <select data-bind="value: filterTxnType">
+        <option value="">All</option>
+        <option value="BUY">Buy</option>
+        <option value="SELL">Sell</option>
+      </select>
+    </label>
+    <button type="button" data-bind="click: applyFilters">Apply Filter</button>
+    <button type="button" data-bind="click: clearFilters">Clear</button>
+  </fieldset>
+  <div style="margin-bottom:2em;">
+    <div style="margin: 1.5em 0; padding: 1em; border: 1px solid #eee; background: #f9f9f9;">
+      <h3>Analytics</h3>
+      <ul>
+        <li><b>Top Customer (Most Transactions):</b>
+          <span data-bind="text: topCustomer() ? topCustomer().name + ' (' + topCustomer().count + ')' : 'N/A'"></span>
+        </li>
+        <li><b>Top Stock (Most Transactions):</b>
+          <span data-bind="text: topStock() ? topStock().symbol + ' (' + topStock().count + ')' : 'N/A'"></span>
+        </li>
+        <li><b>Most Frequent Transaction Type:</b>
+          <span data-bind="text: mostFrequentType"></span>
+        </li>
+      </ul>
+    </div>
+    <h3>Buy vs Sell Frequencies</h3>
+    <oj-chart type="bar"
+              series="[[txnChartSeries]]"
+              groups="[[txnChartGroups]]"
+              animation-on-display="auto"
+              animation-on-data-change="auto"
+              style="max-width: 400px; height: 220px;">
+    </oj-chart>
+  </div>
+  <!-- <button data-bind="click: listTransactions">Refresh Transactions</button> -->
+  <br />
+  <table border="1" cellpadding="8" cellspacing="0" data-bind="visible: displayedTransactions().length > 0" style="margin-top:16px;width:100%;background:#fff;">
+    <thead style="background:#f0f3f9;">
+      <tr>
+        <th>ID</th>
+        <th>Customer</th>
+        <th>Stock</th>
+        <th>Type</th>
+        <th>Quantity</th>
+        <th>Date/Time</th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach: displayedTransactions">
+      <tr>
+        <td data-bind="text: transactionId"></td>
+        <td data-bind="text: customer.name"></td>
+        <td data-bind="text: stock.symbol"></td>
+        <td data-bind="text: transactionType"></td>
+        <td data-bind="text: quantity"></td>
+        <td data-bind="text: transactionDate"></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,78 @@
+<div class="oj-hybrid-padding" style="background:linear-gradient(135deg,#f4f7fc,#e9ecef);min-height:100vh;">
+  <div style="background:#fff;max-width:900px;margin:36px auto;padding:32px 36px;border-radius:14px;box-shadow:0 2px 20px #30558118;">
+    <h1 style="color:#2f5688;">Reports & Analytics</h1>
+    <hr>
+    <h3>Total Assets by Customer</h3>
+    <table border="1" cellpadding="8" cellspacing="0" style="margin-bottom:18px;width:100%;">
+      <thead style="background:#e6eefa;">
+        <tr><th>Customer</th><th>Email</th><th>Asset Value</th><th>Txn Type (by total)</th></tr>
+      </thead>
+      <tbody data-bind="foreach: assetReportList">
+        <tr>
+          <td data-bind="text: name"></td>
+          <td data-bind="text: email"></td>
+          <td data-bind="text: '₹ ' + assetValue"></td>
+          <td data-bind="text: frequentTxnType"></td>
+        </tr>
+      </tbody>
+    </table>
+    <div>
+      <b>Customer with Maximum Asset Value: </b>
+      <span data-bind="text: maxAssetCustomer() ? maxAssetCustomer().name + ' (' + maxAssetCustomer().assetValue + ')' : 'N/A'"></span><br>
+      <b>Customer with Minimum Asset Value: </b>
+      <span data-bind="text: minAssetCustomer() ? minAssetCustomer().name + ' (' + minAssetCustomer().assetValue + ')' : 'N/A'"></span>
+    </div>
+    <hr>
+    <h3>Stocks & Transactions Summary</h3>
+    <div style="margin-bottom:14px;">
+      <b>Most Transacted Stock: </b>
+      <span data-bind="text: topStock() ? topStock().symbol + ' (' + topStock().count + ')' : 'N/A'"></span><br>
+      <b>Least Transacted Stock: </b>
+      <span data-bind="text: leastStock() ? leastStock().symbol + ' (' + leastStock().count + ')' : 'N/A'"></span><br>
+      <b>Stock with Highest Price: </b>
+      <span data-bind="text: highestPriceStock() ? highestPriceStock().symbol + ' (' + highestPriceStock().price + ')' : 'N/A'"></span>
+    </div>
+    <div>
+      <b>Most Frequent Transaction Type: </b>
+      <span data-bind="text: mostFrequentType"></span><br>
+      <b>Total Asset Value (All Customers): </b>
+      <span data-bind="text: totalAssetValue"></span>
+    </div>
+    <hr>
+    <h3>All Customers</h3>
+    <table border="1" cellpadding="6" cellspacing="0" style="margin-bottom:10px;">
+      <thead><tr><th>Name</th><th>Email</th></tr></thead>
+      <tbody data-bind="foreach: customers">
+        <tr>
+          <td data-bind="text: name"></td>
+          <td data-bind="text: email"></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>All Stocks</h3>
+    <table border="1" cellpadding="6" cellspacing="0" style="margin-bottom:10px;">
+      <thead><tr><th>Symbol</th><th>Name</th><th>Price</th><th>Quantity</th></tr></thead>
+      <tbody data-bind="foreach: stocks">
+        <tr>
+          <td data-bind="text: symbol"></td>
+          <td data-bind="text: name"></td>
+          <td data-bind="text: price"></td>
+          <td data-bind="text: quantity"></td>
+        </tr>
+      </tbody>
+    </table>
+    <h3>All Transactions</h3>
+    <table border="1" cellpadding="6" cellspacing="0">
+      <thead><tr><th>Customer</th><th>Stock</th><th>Type</th><th>Quantity</th><th>Date</th></tr></thead>
+      <tbody data-bind="foreach: transactions">
+        <tr>
+          <td data-bind="text: customer && customer.name"></td>
+          <td data-bind="text: stock && stock.symbol"></td>
+          <td data-bind="text: transactionType"></td>
+          <td data-bind="text: quantity"></td>
+          <td data-bind="text: transactionDate"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

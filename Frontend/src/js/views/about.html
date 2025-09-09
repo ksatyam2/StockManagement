@@ -1,0 +1,81 @@
+<div style="min-height:100vh; background:linear-gradient(135deg,#e0e7ef 0%, #fff 100%); padding-top:30px;">
+  <div style="max-width:790px; margin:30px auto 0 auto; background:#fff; border-radius:16px; box-shadow:0 2px 24px #27508122; padding:28px 38px 38px 38px;">
+    <header>
+      <h1 style="color:#2352a2;font-size:2.2em;margin-bottom:5px;">
+        <span style="font-weight:900;">Stock Manager</span>
+      </h1>
+      <p style="color:#444;font-size:1.18em;">
+        <strong>Project Overview:</strong>
+        <span style="color:#446">Stock Manager is a robust Java-based application designed to manage stock inventories and customer data through a clean, modern UI. It supports adding, updating, and removing stocks, maintaining customer info, and facilitating stock transactions (buy/sell). All operations are integrated with an Oracle database with proper authentication and data integrity.</span>
+      </p>
+    </header>
+    <hr style="border: 0; border-top: 2px solid #ccdbf5; margin:25px 0 15px 0;">
+
+    <section>
+      <h2 style="color:#2b497a; margin-bottom:12px;">Key Features</h2>
+      <div style="display:flex;gap:22px;flex-wrap:wrap;">
+        <div style="background:#f3f9ff;padding:20px;border-radius:9px;flex:1;min-width:220px;">
+          <h3 style="color:#4577b7;">Stock Management</h3>
+          <ul>
+            <li><strong>Add New Stock:</strong> Name, symbol, price, quantity.</li>
+            <li><strong>Remove Stock:</strong> By unique symbol.</li>
+            <li><strong>Update Stock:</strong> Price and quantity.</li>
+            <li><strong>Retrieve Stock:</strong> View all stock records.</li>
+          </ul>
+        </div>
+        <div style="background:#f8f7fb;padding:20px;border-radius:9px;flex:1;min-width:220px;">
+          <h3 style="color:#7161c0;">Customer Management</h3>
+          <ul>
+            <li><strong>Add New Customer:</strong> With name and email.</li>
+            <li><strong>Remove Customer:</strong> By customer ID.</li>
+            <li><strong>Update Customer:</strong> Edit details.</li>
+            <li><strong>Retrieve Customer:</strong> View all records.</li>
+          </ul>
+        </div>
+        <div style="background:#fff9f4;padding:20px;border-radius:9px;flex:1;min-width:220px;">
+          <h3 style="color:#b85b16;">Stock Transactions</h3>
+          <ul>
+            <li><strong>Purchase Stocks:</strong> Quantity decreases; transaction logged for customer.</li>
+            <li><strong>Sell Stocks:</strong> Adjusts quantity, records sale history.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <hr style="border: 0; border-top: 2px solid #f3d189; margin:30px 0 20px 0;">
+    <section>
+      <h2 style="color:#2b497a;">Data Persistence</h2>
+      <p style="color:#444;padding-left:4px;">
+        <strong>Database Integration:</strong>
+        <span>All records are stored in Oracle DB tables for stocks, customers, and transactions. Secure authentication is managed via a database-driven users table, enabling both customer and admin login and role-based access.</span>
+      </p>
+    </section>
+    <section>
+      <h2 style="color:#2b497a;">Technologies Used</h2>
+      <dl style="margin-left:4px;">
+        <dt style="font-weight:bold;color:#456;">Programming</dt>
+        <dd style="margin-bottom:6px;">Java 21, Spring Boot 3, Oracle JET (KnockoutJS)</dd>
+        <dt style="font-weight:bold;color:#456;">Database</dt>
+        <dd style="margin-bottom:6px;">Oracle 11/19/23</dd>
+        <dt style="font-weight:bold;color:#456;">Architecture</dt>
+        <dd style="margin-bottom:6px;">Object-Oriented, RESTful, MVVM (JET)</dd>
+      </dl>
+    </section>
+    <hr style="border: 0; border-top: 2px solid #cae3e3; margin:32px 0 16px 0;">
+    <section>
+      <h2 style="color:#2b497a;">Sample Reports & Analytics</h2>
+      <ol style="color:#333;">
+       <li>List customers, stock details, and their total assets including the transaction type.</li>
+      <li>List the customer whose asset value is the maximum.</li>
+      <li>List the customer whose asset value is the minimum.</li>
+      <li>List the stock name transacted the most number of times.</li>
+      <li>List the stock name transacted the least number of times.</li>
+      <li>List the stock name whose price is the highest.</li>
+      <li>List all stock details.</li>
+      <li>List all customer details.</li>
+      <li>List all transaction details.</li>
+      <li>Show which transaction type is more frequent (sell or buy).</li>
+      <li>Display total assets of all customers.</li>
+      </ol>
+    </section>
+  </div>
+</div>

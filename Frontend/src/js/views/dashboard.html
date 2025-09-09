@@ -1,0 +1,116 @@
+<div style="padding-top:25px;min-height:100vh;background: linear-gradient(120deg, #deebf7 0%, #fafbfc 70%);">
+  <div style="max-width:980px;margin:30px auto;padding:32px 40px 40px 40px;background:#fff;border-radius:16px;box-shadow:0 2px 18px #bbb8;">
+    <!-- Header/profile/summary -->
+    <div style="display:flex;align-items:center;">
+      <div style="flex:1;">
+        <h1 style="color:#2565a6;margin:0 0 10px 0;">My Dashboard</h1>
+        <div style="padding:10px 18px;background:#f5fafd;border-radius:7px;margin-bottom:22px;">
+          <span style="font-size:1.18em;color:#225;">
+            Hello, <b data-bind="text: profile().name"></b>
+          </span>
+          <br>
+          <span style="font-size:0.96em;color:#789;">Email: <span data-bind="text: profile().email"></span></span>
+        </div>
+      </div>
+      <div style="background:#f5f6f8;padding:18px 26px;margin:0 16px 0 0;border-radius:14px;min-width:200px;min-height:76px;text-align:center;">
+        <span style="font-size:0.97em;color:#3c578c;">Total Portfolio Value</span><br>
+        <span style="font-size:2em;font-weight:700;color:#29ab7b;line-height:1;" data-bind="text: totalPortfolioValue"></span>
+      </div>
+    </div>
+    <hr>
+
+ 
+    <div style="display:flex;gap:32px;flex-wrap:wrap;">
+      <div style="flex:2;min-width:240px;">
+        <h3 style="color:#2565a6;margin-bottom:8px;">Portfolio by Stock</h3>
+        <oj-chart
+          type="pie"
+          series="[[holdingsPieSeries]]"
+          groups="[['Holdings']]"
+          animation-on-display="auto"
+          animation-on-data-change="auto"
+          style="height:220px;width:320px;margin:auto;"
+          title="Portfolio by Stock"
+        ></oj-chart>
+      </div>
+      <div style="flex:2;min-width:280px;">
+        <h3 style="color:#2565a6;margin-bottom:8px;">Buy vs Sell History</h3>
+        <oj-chart
+          type="bar"
+          series="[[myTxnChartSeries]]"
+          groups="[[myTxnChartGroups]]"
+          animation-on-display="auto"
+          animation-on-data-change="auto"
+          style="height:220px;width:320px;margin:auto;"
+          title="Buy/Sell History"
+        ></oj-chart>
+      </div>
+    </div>
+    <hr>
+
+    <h3 style="color:#2565a6;margin-bottom:8px;">My Holdings</h3>
+    <table border="1" cellpadding="8" cellspacing="0" style="width:100%;background:#f9fcff;margin-bottom:20px;" data-bind="visible: holdings().length > 0">
+      <thead style="background:#e0e8ff;">
+        <tr>
+          <th>Stock</th>
+          <th>Symbol</th>
+          <th>Quantity</th>
+          <th>Latest Price</th>
+          <th>Total Value</th>
+          <th>Sell</th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: holdings">
+        <tr>
+          <td data-bind="text: name"></td>
+          <td data-bind="text: symbol"></td>
+          <td data-bind="text: quantity"></td>
+          <td data-bind="text: '₹ ' + price"></td>
+          <td data-bind="text: '₹ ' +totalValue"></td>
+          <td>
+            <form data-bind="submit: $parent.sellStock.bind($parent, $data)">
+              <input type="number" min="1" data-bind="value: sellQty" placeholder="Sell" style="width:50px;">
+              <button type="submit"
+                data-bind="enable: sellQty() && parseInt(sellQty(),10) > 0 && parseInt(sellQty(),10) <= quantity">
+                Sell
+              </button>
+            </form>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3 style="color:#2565a6;margin-bottom:10px;">Buy Stock</h3>
+    <form data-bind="submit: buyStock" style="margin-bottom:26px;">
+      <label style="margin-right:1em;">
+        Stock:
+        <select data-bind="options: stocks, optionsText: 'symbol', optionsValue: 'stockId', value: buyStockId, optionsCaption: 'Select stock'" required></select>
+      </label>
+      <label>
+        Quantity:
+        <input type="number" min="1" style="width:60px;" data-bind="value: buyQty" required>
+      </label>
+      <button type="submit">Buy</button>
+    </form>
+
+    <h3 style="color:#2565a6;margin-bottom:10px;">My Transactions</h3>
+    <table border="1" cellpadding="8" cellspacing="0" style="width:100%;background:#f4f4fa;" data-bind="visible: myTransactions().length > 0">
+      <thead style="background:#e0e6f4;">
+        <tr>
+          <th>Stock</th>
+          <th>Type</th>
+          <th>Quantity</th>
+          <th>Date/Time</th>
+        </tr>
+      </thead>
+      <tbody data-bind="foreach: myTransactions">
+        <tr>
+          <td data-bind="text: stock && stock.symbol"></td>
+          <td data-bind="text: transactionType"></td>
+          <td data-bind="text: quantity"></td>
+          <td data-bind="text: transactionDate"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

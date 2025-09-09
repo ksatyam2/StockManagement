@@ -1,0 +1,41 @@
+<div class="oj-hybrid-padding">
+  <h1 style="color:#2f5688;">Customers</h1>
+  <form id="customerForm" data-bind="submit: addCustomer" style="background:#f4f8fc;padding:16px;border-radius:6px;">
+    <fieldset>
+      <legend style="font-weight:bold">Add a Customer</legend>
+      <label style="margin-right:1em;">Name: <input data-bind="value: newCustomerName" required></label>
+      <label>Email: <input type="email" data-bind="value: newCustomerEmail" required></label>
+      <button type="submit" style="margin-left:1em;">Add Customer</button>
+    </fieldset>
+  </form>
+  <div style="margin:18px 0;">
+    <button data-bind="click: listCustomers">Refresh List</button>
+    <button data-bind="click: deleteCustomer, enable: selectedCustomerId()">Delete Selected</button>
+  </div>
+  <table class="oj-table" border="1" cellpadding="8" cellspacing="0" style="width:100%;background:#fff;" data-bind="visible: customers().length > 0">
+    <thead style="background:#f0f3f9;">
+      <tr>
+        <th>Select</th><th>ID</th><th>Name</th><th>Email</th><th>Edit</th>
+      </tr>
+    </thead>
+    <tbody data-bind="foreach: customers">
+      <tr>
+        <td><input type="radio" name="selectedCustomer" data-bind="checkedValue: customerId, checked: $parent.selectedCustomerId"></td>
+        <td data-bind="text: customerId"></td>
+        <td data-bind="text: name"></td>
+        <td data-bind="text: email"></td>
+        <td><button type="button" data-bind="click: $parent.openEditDialog.bind($parent, $data)">Edit</button></td>
+      </tr>
+    </tbody>
+  </table>
+  <oj-dialog id="editCustomerDialog" dialog-title="Edit Customer" modality="modeless">
+    <div slot="body">
+      <form data-bind="submit: saveEditCustomer">
+        <label>Name: <input data-bind="value: editCustomer().name" required></label><br>
+        <label>Email: <input data-bind="value: editCustomer().email" required></label><br>
+        <button type="submit">Save</button>
+        <button type="button" data-bind="click: closeEditDialog">Cancel</button>
+      </form>
+    </div>
+  </oj-dialog>
+</div>
