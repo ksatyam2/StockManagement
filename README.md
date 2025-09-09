@@ -1,41 +1,44 @@
-# 📦 Stock Manager
+# StocksManager_2025
+This is the problem statement / project details:
 
-## 📌 Description
-Stock Manager is a full-stack web application designed to manage stocks and customers efficiently.  
-It provides functionalities to add, update, and remove stocks, manage customer information, and handle stock transactions such as buying and selling.  
+Stock Manager
+Project Overview
+Stock Manager is a robust Java-based application developed to efficiently manage stock inventories and customer data within a simplified interface. The system provides core functionalities such as adding, updating, and removing stocks, handling customer information, and facilitating stock transactions including purchases and sales. Designed with maintainability and scalability in mind, Stock Manager leverages Oracle database integration for persistent data storage, ensuring data integrity across sessions.
 
-The backend is powered by **Spring Boot REST APIs** with **Spring Data JPA** for Oracle database integration, while the frontend is built using **Angular** for an interactive user experience.
+Key Features
 
----
+Stock Management
+Add New Stock: Users can add new stocks by specifying key details such as the stock name, symbol, price, and quantity. Remove Stock: Enables the deletion of stock entries based on their unique symbol. Update Stock: Allows modification of existing stock records, including changes to stock price and available quantity. Retrieve Stock: Retrieves existing stock records
 
-## 🚀 Features
+Customer Management
+Add New Customer: Users can register new customers by entering details such as name, customer ID, and email address. Remove Customer: Provides functionality to delete a customer profile using their unique customer ID. Update Customer: Allows modification of existing customer records. Retrieve Customer: Retrieves existing customer records
 
-### 🔹 Stock Management
-- **Add Stock** – Add new stocks with details such as name, symbol, price, and quantity.  
-- **Remove Stock** – Remove stocks from the system using their symbol.  
-- **Update Stock** – Update stock details (price, quantity).  
+Stock Transactions
+Purchase Stocks: Customers can buy stocks from the system. The purchase updates the stock quantity in the inventory and logs the transaction in the customer’s history.
 
-### 🔹 Customer Management
-- **Add Customer** – Add new customers with name, ID, and email.  
-- **Remove Customer** – Remove customers by ID.  
+Sell Stocks: Allows customers to sell previously purchased stocks. The transaction adjusts the stock quantity accordingly and records the sale in the customer's history.
 
-### 🔹 Stock Transactions
-- **Purchase Stocks** – Customers can purchase available stocks. Updates stock quantity and maintains purchase history.  
-- **Sell Stocks** – Customers can sell their owned stocks. Updates stock quantity and maintains sale history.  
+Data Persistence
+Database Integration:
 
-### 🔹 Persistence
-- Data is stored in **Oracle Database tables**.  
-- **Spring Data JPA** (with Hibernate) handles database operations.  
+The application employs Oracle database tables for persistent storage of stock and customer information.
 
----
+Technologies Used Programming Language: Java version 21, Java EE 7 Platform, Spring Boot 5, Apache Tomcat 10
 
-## 🛠️ Tech Stack
-- **Backend**: Spring Boot (REST APIs, Spring Data JPA, Hibernate)  
-- **Frontend**: Angular  
-- **Database**: Oracle DB  
-- **Build Tools**: Maven / Gradle  
-- **Version Control**: GitHub  
+Database: Oracle Version 23
 
----
+Architecture: Object-Oriented Design
 
-## ⚙️ Project Structure
+Your application should be able to generate the following reports (OPTIONAL)
+
+List of customers, stocks details and their total assets including the txn type
+List the customer whose asset value is the maximum
+List the customer whose asset value is the minimum
+List the stock name which has been transacted more number of times
+List the stock name which has been transacted less number of times
+List the stock name whose price is the highest
+List all the stock details
+List all the customer details
+List all the txn details 10.List which txn is more (sell or buy) 11.Display total assests of all customers
+100.0%
+Footer
